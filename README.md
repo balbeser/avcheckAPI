@@ -2,4 +2,5 @@
 
 Пример вывода информации в консоль:
 
-![alt text](http://url/to/img.png)
+
+<img width="1088" alt="screenshot" src="https://user-images.githubusercontent.com/70597611/167427563-bb8bb533-1610-4b13-a752-e78a5673666f.png">
