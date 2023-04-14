@@ -12,15 +12,13 @@ class Avcheck(object):
         self.file_name : str = ""
         self.check_id : str = ""
 
-        self.get_data()
-        self.format_result()
-
     def get_data(self):
         data = {"apikey": self.apikey, "task_type": "file"}
         with open(self._path, "rb") as doc:
             self._data = requests.post("http://avcheck.net/vhm/api/v1/check/new/", files={'file': doc}, data=data).json()
 
-    def format_result(self):
+    def check(self):
+        self.get_data()
         self._detects = str(self._data["data"]["info"]["duration"])
         self.file_name = str(self._data["data"]["info"]["object_name"])
         self.check_id = str(self._data["data"]["info"]["check_id"])
@@ -33,7 +31,8 @@ class Avcheck(object):
 
 if __name__ == "__main__":
     file = input("Drag file: ")
-    detects = Avcheck(file)
+    avcheck = Avcheck(file)
+    detects = avcheck.check
     print("Total: "+detects._detects)
     for i in detects.detects:
         status = "+" if i["status"] else "-"
