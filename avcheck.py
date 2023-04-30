@@ -32,7 +32,7 @@ class Avcheck(object):
 if __name__ == "__main__":
     file = input("Drag file: ")
     avcheck = Avcheck(file)
-    detects = avcheck.check
+    detects = avcheck.check()
     print("Total: "+detects._detects)
     for i in detects.detects:
         status = "+" if i["status"] else "-"
